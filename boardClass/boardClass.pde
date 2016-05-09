@@ -3,7 +3,7 @@ ArrayList<Dot> dots = new ArrayList<Dot>();
 void setup() {
   size(442, 456);
   background(0);
-  smooth();
+  noSmooth();
   ellipseMode(CENTER);
   int map[][] = board.map;
   for (int i=0; i<map.length; i++) {
@@ -109,14 +109,7 @@ class Dot {
   }
   int collisionCheck(PVector player) {
     if (cord.dist(player)<radius) {
-      switch(radius) {
-        case 5:
-          board.score+=10;
-          break;
-        case 10:
-          board.score+=50;
-          break;
-      }
+      board.score += (radius==5) ? 10:50;
       return(radius); //So we can decide whether to turn ghosts blue
     } else {
       return(0);
